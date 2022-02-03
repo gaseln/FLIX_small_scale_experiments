@@ -1,6 +1,6 @@
 # Explicit Mixture of Local and Global models #
 
-This repository contains the code to run small-scale experiments presented in the paper ["FLIX: A Simple and Communication-Efficient Alternative to Local Methods in Federated Learning"](https://arxiv.org/abs/2111.11556). For large-scale experiments, look at [add_link](google.com).
+This repository contains the code to run small-scale experiments presented in the paper ["FLIX: A Simple and Communication-Efficient Alternative to Local Methods in Federated Learning"](https://arxiv.org/abs/2111.11556). For large-scale experiments, check [this repo](https://github.com/gaseln/fedmix_on_fedjax).
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
