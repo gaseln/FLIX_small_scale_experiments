@@ -12,7 +12,7 @@ PLOT_PATH = 'plots'
 
 def save_run(exp, alpha, grad, f_val, distance, dataset_name, logreg, k_sparse=None):
     assert np.std(alpha) < 1e-5
-    assert k_sparse is None or np.std(k_sparse) == 0
+#     assert k_sparse is None or np.std(k_sparse) == 0
     if not os.path.isdir(SAVED_RUNS_PATH):
         os.makedirs(SAVED_RUNS_PATH)
     run = create_run(exp, alpha, grad, f_val, distance)
@@ -20,7 +20,8 @@ def save_run(exp, alpha, grad, f_val, distance, dataset_name, logreg, k_sparse=N
     name = exp + '_' + alg + '_' + dataset_name + '_' + str(alpha[0])
     
     if k_sparse is not None:
-        name += '_' + str(k_sparse[0])
+        for k in k_sparse:
+            name += '_' + str(k)
     
     file = os.path.join(SAVED_RUNS_PATH, name + '.pickle')
     with open(file, 'wb') as f:
@@ -29,11 +30,12 @@ def save_run(exp, alpha, grad, f_val, distance, dataset_name, logreg, k_sparse=N
 
 def read_run(exp, alpha, dataset_name, logreg, k_sparse=None):
     assert np.std(alpha) < 1e-5
-    assert k_sparse is None or np.std(k_sparse) == 0
+#     assert k_sparse is None or np.std(k_sparse) == 0
     alg = get_alg(logreg)
     name = exp + '_' + alg + '_' + dataset_name + '_' + str(alpha[0])
     if k_sparse is not None:
-        name += '_' + str(k_sparse[0])
+        for k in k_sparse:
+            name += '_' + str(k)
     file = os.path.join(SAVED_RUNS_PATH, name + '.pickle')
     with open(file, 'rb') as f:
         run = load(f)

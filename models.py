@@ -46,7 +46,10 @@ class Node:
                     self.validation_indices = np.arange(train_size, self.n)
             self._add_intercept()
             self.d = self.x_train.shape[1]
-            self.d_y = self.y_train.shape[1]
+            if len(self.y_train.shape) > 1:
+                self.d_y = self.y_train.shape[1]
+            else:
+                self.d_y = None
             
         self.reg = regularization
 
